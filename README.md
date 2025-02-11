@@ -26,7 +26,8 @@ Navigate to the project folder
 Open calculator.html in a web browser
 
 🖥 Preview
-
+## 🖥 Preview  
+![Calculator Preview](https://github.com/Kankalanandu/Advanced-Calculator-HTML-CSS-JavaScript-/blob/main/Advance%20calculator.png)
 
 ⚡ Technologies Used
 
