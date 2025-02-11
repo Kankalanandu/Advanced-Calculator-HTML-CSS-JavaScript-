@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 300px;
+        }
+        #display {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 20px;
+            border: none;
+            background-color: #eee;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:active {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')" aria-label="7">7</button>
+            <button onclick="appendToDisplay('8')" aria-label="8">8</button>
+            <button onclick="appendToDisplay('9')" aria-label="9">9</button>
+            <button onclick="appendToDisplay('/')" aria-label="divide">÷</button>
+            <button onclick="appendToDisplay('4')" aria-label="4">4</button>
+            <button onclick="appendToDisplay('5')" aria-label="5">5</button>
+            <button onclick="appendToDisplay('6')" aria-label="6">6</button>
+            <button onclick="appendToDisplay('*')" aria-label="multiply">×</button>
+            <button onclick="appendToDisplay('1')" aria-label="1">1</button>
+            <button onclick="appendToDisplay('2')" aria-label="2">2</button>
+            <button onclick="appendToDisplay('3')" aria-label="3">3</button>
+            <button onclick="appendToDisplay('-')" aria-label="subtract">-</button>
+            <button onclick="appendToDisplay('0')" aria-label="0">0</button>
+            <button onclick="appendToDisplay('.')" aria-label="decimal">.</button>
+            <button onclick="clearDisplay()" aria-label="clear">C</button>
+            <button onclick="appendToDisplay('+')" aria-label="add">+</button>
+            <button onclick="calculate()" style="grid-column: span 4; background-color: #28a745; color: white;" aria-label="equals">=</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                const result = math.evaluate(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                alert('Invalid Expression');
+            }
+        }
+    </script>
+</body>
+</html>
